@@ -115,7 +115,7 @@
                 <artifactId>native-maven-plugin</artifactId>
                 <configuration>
                     <buildArgs>
-                        <buildArg>-march=compatibility</buildArg>
+                        <buildArg>-march=x86-64-v2</buildArg>
                     </buildArgs>
                 </configuration>
             </plugin>
