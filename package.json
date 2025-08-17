@@ -1,0 +1,29 @@
+{
+  "name": "ate-ngambek",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agungdh/ate-ngambek.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/agungdh/ate-ngambek/issues"
+  },
+  "homepage": "https://github.com/agungdh/ate-ngambek#readme",
+  "devDependencies": {
+    "vite": "^7.1.2"
+  },
+  "dependencies": {
+    "admin-lte": "^4.0.0-rc4",
+    "alpinejs": "^3.14.9",
+    "axios": "^1.11.0",
+    "sweetalert2": "^11.22.4",
+    "toastr": "^2.1.4"
+  }
+}
