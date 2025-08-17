@@ -1,5 +1,15 @@
+# Kirim hanya file yang dibutuhkan untuk build di container
+!pom.xml
+!src/**
+!mvnw
+!.mvn/wrapper/**
+!Dockerfile
+!.dockerignore
+
+# Ignore sisanya biar konteks kecil
 *
-!target/*-runner
-!target/*-runner.jar
-!target/lib/*
-!target/quarkus-app/*
+# tapi pastikan artefak hasil build lokal juga ter-ignore
+target/
+**/node_modules/
+.DS_Store
+*.log
