@@ -26,7 +26,7 @@ RUN apt-get update && \
 WORKDIR /app
 
 # Salin binary hasil build (pastikan nama sesuai <finalName> atau artifactId di pom.xml)
-COPY --from=builder /workspace/target/api ./
+COPY --from=builder /workspace/target/ate-ngambek ./
 
 # Jalankan aplikasi
-ENTRYPOINT ["./api"]
+ENTRYPOINT ["./ate-ngambek"]
