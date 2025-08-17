@@ -127,6 +127,7 @@
             <properties>
                 <skipITs>false</skipITs>
                 <quarkus.native.enabled>true</quarkus.native.enabled>
+                <quarkus.native.additional-build-args>--march=x86-64-v2</quarkus.native.additional-build-args>
             </properties>
         </profile>
     </profiles>
