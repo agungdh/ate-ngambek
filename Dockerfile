@@ -27,20 +27,27 @@ ENV JAVA_OPTS="" QUARKUS_HTTP_HOST=0.0.0.0
 ENTRYPOINT ["bash","-lc","java $JAVA_OPTS -jar quarkus-app/quarkus-run.jar"]
 
 ############################
-# 3) BUILD (NATIVE) — Mandrel
+# 3) BUILD (NATIVE) — Mandrel + mvnw
 ############################
-# Mandrel builder sudah include native-image ⇒ no 'gu install'
-# Versi contoh: 23.1 untuk Java 21
 FROM quay.io/quarkus/ubi-quarkus-mandrel-builder-image:23.1-java21 AS build-native
 WORKDIR /workspace/app
+USER root
 
-# Cache deps dulu
+# mvnw butuh beberapa util (umumnya sudah ada, tapi aman kita pasang)
+RUN microdnf install -y unzip tar gzip findutils curl && microdnf clean all
+
+# Copy wrapper + pom lebih dulu biar cache jalan
+COPY .mvn/ .mvn/
+COPY mvnw .
 COPY pom.xml .
-RUN --mount=type=cache,target=/root/.m2 mvn -q -e -DskipTests dependency:go-offline
+RUN chmod +x mvnw
+
+# Pre-fetch dependencies
+RUN --mount=type=cache,target=/root/.m2 ./mvnw -q -e -DskipTests dependency:go-offline
 
 # Build native runner
 COPY src ./src
-RUN --mount=type=cache,target=/root/.m2 mvn -q -e -DskipTests -Pnative package
+RUN --mount=type=cache,target=/root/.m2 ./mvnw -q -e -DskipTests -Pnative package
 
 ############################
 # 4) RUNTIME (NATIVE)
