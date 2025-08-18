@@ -1,5 +1,6 @@
 package id.my.agungdh.resource;
 
+import io.quarkus.qute.CheckedTemplate;
 import io.quarkus.qute.Location;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
@@ -14,13 +15,14 @@ import io.quarkus.qute.Template;
 @Path("hello")
 public class HelloResource {
 
-    @Inject
-    @Location("layouts/default.html")
-    Template hello;
+    @CheckedTemplate
+    public static class Templates {
+        public static native TemplateInstance helloasdfas();
+    }
 
     @GET
     @Produces(MediaType.TEXT_HTML)
     public TemplateInstance get() {
-        return hello.instance();
+        return Templates.helloasdfas();
     }
 }
