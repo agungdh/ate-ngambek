@@ -15,19 +15,12 @@ import io.quarkus.qute.Template;
 public class HelloResource {
 
     @Inject
+    @Location("layouts/default.html")
     Template hello;
 
     @GET
     @Produces(MediaType.TEXT_HTML)
-    public TemplateInstance get(@QueryParam("name") String name) {
-        return hello.data("name", name);
-    }
-
-    @GET()
-    @Path("/dududuw")
-    @Produces(MediaType.TEXT_HTML)
-    @Location("/hellos-sddd.html")
-    public TemplateInstance getDuduw(@QueryParam("name") String name) {
-        return hello.data("name", name);
+    public TemplateInstance get() {
+        return hello.instance();
     }
 }
