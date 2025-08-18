@@ -17,12 +17,12 @@ public class HelloResource {
 
     @CheckedTemplate
     public static class Templates {
-        public static native TemplateInstance helloasdfas();
+        public static native TemplateInstance hello();
     }
 
     @GET
     @Produces(MediaType.TEXT_HTML)
     public TemplateInstance get() {
-        return Templates.helloasdfas();
+        return Templates.hello();
     }
 }
