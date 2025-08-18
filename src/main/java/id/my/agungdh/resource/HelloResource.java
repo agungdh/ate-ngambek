@@ -14,15 +14,9 @@ import io.quarkus.qute.Template;
 
 @Path("hello")
 public class HelloResource {
-
-    @CheckedTemplate
-    public static class Templates {
-        public static native TemplateInstance hello();
-    }
-
     @GET
-    @Produces(MediaType.TEXT_HTML)
-    public TemplateInstance get() {
-        return Templates.hello();
+    @Produces(MediaType.TEXT_PLAIN)
+    public String hello() {
+        return "Surimbim";
     }
 }
